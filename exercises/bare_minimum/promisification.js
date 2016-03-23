@@ -51,11 +51,11 @@ var getGitHubProfile = function (user, callback) {
 
   request.get(options, function (err, res, body) {
     if (err) {
-      callback(err, null);
+      callback(err, res);
     } else if (body.message) {
       callback(new Error('Failed to get GitHub profile: ' + body.message), null);
     } else {
-      callback(null, body);
+      callback(err, body);
     }
   });
 };
